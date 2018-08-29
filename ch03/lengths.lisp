@@ -42,3 +42,10 @@
         for e = (pop xs)
         do (incf len)
         finally (return len)))
+
+(defun length6.1 (xs)
+  (loop with len = 0
+        until (null xs)
+        do (pop xs)
+        do (incf len)
+        finally (return len)))
