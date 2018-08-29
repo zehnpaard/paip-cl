@@ -49,3 +49,12 @@
         do (pop xs)
         do (incf len)
         finally (return len)))
+
+(defun length7 (xs)
+  (count-if #'true xs))
+(defun true (x) t)
+
+(defun length7 (xs)
+  (if (null xs)
+    0
+    (+ 1 (position-if #'true xs :from-end t))))
