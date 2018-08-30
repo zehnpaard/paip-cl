@@ -54,7 +54,32 @@
   (count-if #'true xs))
 (defun true (x) t)
 
-(defun length7 (xs)
+(defun length8 (xs)
   (if (null xs)
     0
     (+ 1 (position-if #'true xs :from-end t))))
+
+(defun length9 (xs)
+  (if (null xs)
+    0
+    (+ 1 (length9 (rest xs)))))
+
+(defun length10 (xs)
+  (length10-aux xs 0))
+(defun length10-aux (xs n)
+  (if (null xs)
+    n
+    (length10-aux (rest xs) (+ n 1))))
+
+(defun length11 (xs &optional (n 0))
+  (if (null xs)
+    n
+    (length11 (rest xs) (+ n 1))))
+
+(defun length12 (xs)
+  (labels
+    ((length12-aux (xs n)
+       (if (null xs)
+         n
+         (length12-aux (rest xs) (+ n 1)))))
+    (length12-aux xs 0)))
