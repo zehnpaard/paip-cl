@@ -1,0 +1,7 @@
+(defun print-dotted (p)
+  (princ "(")
+  (princ (car p))
+  (princ " . ")
+  (princ (cdr p))
+  (princ ")")
+  nil)
