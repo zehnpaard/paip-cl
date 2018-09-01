@@ -14,7 +14,12 @@
 
 (defun GPS (*state* goals *ops*)
   "General Problem Solver: achieve all goals using *ops*"
-  (if (every #'achieve goals) 'solved))
+  (if (achieve-all goals) 'solved))
+
+(defun achieve-all (goals)
+  "Try to achieve each goal, then make sure they still hold."
+  (and (every #'achieve goals)
+       (subsetp goals *state*)))
 
 (defun achieve (goal)
   "A goal is achieved if it already holds,
@@ -29,7 +34,7 @@
 
 (defun apply-op (op)
   "Print a message and update *state* if op is applicable"
-  (when (every #'achieve (op-preconds op))
+  (when (achieve-all (op-preconds op))
     (print (list 'executing (op-action op)))
     (setf *state* (set-difference *state* (op-del-list op)))
     (setf *state* (union *state* (op-add-list op)))
