@@ -6,8 +6,8 @@
     (fresh-line *debug-io*)
     (apply #'format *debug-io* format-string args)))
 
-(defun debug (&rest ids)
-  "Start dbg output on the given ids"
+(defun ddebug (&rest ids)
+  "Start dbg output on the given ids "
   (setf *dbg-ids* (union ids *dbg-ids*)))
 
 (defun undebug (&rest ids)
@@ -20,5 +20,5 @@
   "Print indented debugging info if (DEBUG ID) has been specified"
   (when (member id *dbg-ids*)
     (fresh-line *debug-io*)
-    (dotimes (i indent) (printc "  " *debug-io*))
+    (dotimes (i indent) (princ "  " *debug-io*))
     (apply #'format *debug-io* format-string args)))
