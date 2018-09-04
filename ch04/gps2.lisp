@@ -17,3 +17,13 @@
   (convert-op
     (make-op :action action :preconds preconds
              :add-list add-list :del-list del-list)))
+
+(defvar *ops* nil
+  "A list of available operators")
+
+(defstruct op "An operation"
+  (action nil) (preconds nil) (add-list nil) (del-list nil))
+
+(defun GPS (state goals &optional (*ops* *ops*))
+  "General Problem Solver: from state, achieve goals using *ops*"
+  (remove-if #'atom (achieve-all (cons '(start) state) goals nil)))
