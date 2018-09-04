@@ -1,3 +1,7 @@
+(load "find-all.lisp")
+(load "test1.lisp")
+(load "debug.lisp")
+
 (defun executing-p (x)
   "Is x of the form+ (executing ...)?"
   (starts-with x 'executing))
