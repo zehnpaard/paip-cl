@@ -79,4 +79,3 @@
 
 (load "test1.lisp")
 (mapc #'convert-op *school-ops*)
-(use *school-ops*)
